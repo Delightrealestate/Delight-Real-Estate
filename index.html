@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delight Real Estate | Strategic Business & Investment Advisors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #d4af37;
+            --accent: #2c5aa0;
+            --light: #f8f9fa;
+            --dark: #333;
+            --gray: #6c757d;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--secondary);
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 13px;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: transparent;
+            color: var(--success);
+        }
+
+        .btn-disabled {
+            background-color: #ccc;
+            border-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .btn-disabled:hover {
+            background-color: #ccc;
+            color: #666;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .service-content li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-content li::before {
+            content: '•';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Policies Section */
+        .policies {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .policies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .policy-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .policy-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-card h3 i {
+            color: var(--secondary);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-buttons {
+                display: none;
+            }
+            
+            .mobile-nav-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .service-card, .policy-card {
+                padding: 20px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group input.error {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: var(--success);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .otp-section {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .otp-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .otp-timer {
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .form-footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-code {
+            width: 80px;
+            flex-shrink: 0;
+        }
+
+        .phone-number {
+            flex-grow: 1;
+        }
+
+        .send-otp-btn {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <h1>Delight <span>Real Estate</span></h1>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#listings" class="btn btn-small">View Listing</a></li>
+                    <div class="nav-buttons">
+                        <a href="#" class="btn btn-small btn-outline" id="login-btn">Login</a>
+                        <a href="#" class="btn btn-small" id="signup-btn">Sign Up</a>
+                    </div>
+                </ul>
+                <div class="mobile-nav-buttons" style="display: none;">
+                    <a href="#" class="btn btn-small btn-outline" id="mobile-login-btn">Login</a>
+                    <a href="#" class="btn btn-small" id="mobile-signup-btn">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Strategic Real Estate Advisors for Business & Investment</h2>
+            <p>Expert consultancy, research, and deal execution across key sectors including energy, manufacturing, renewable energy, and commercial real estate.</p>
+            <a href="#services" class="btn">Our Services</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Specialized Services</h2>
+                <p>We provide strategic real estate solutions across multiple sectors with a focus on high-value business transactions.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Business Dealings -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Business Dealings</h3>
+                        <p>Buy/Sale/Lease across key industrial sectors:</p>
+                        <ul>
+                            <li>Energy Sector</li>
+                            <li>Manufacturing & Factory Sector</li>
+                            <li>Renewable Energy Sector</li>
+                            <li>Metal Sector</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Land Parcel -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Land Parcel Transactions</h3>
+                        <p>Strategic acquisition and disposition of land assets:</p>
+                        <ul>
+                            <li>Industrial Land</li>
+                            <li>Commercial Land</li>
+                            <li>Agricultural Land</li>
+                            <li>Solar-Feasible Land Parcel</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Education & Hospitality -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Education & Hospitality</h3>
+                        <p>Strategic transactions in institutional assets:</p>
+                        <ul>
+                            <li>Schools & Universities</li>
+                            <li>Hospitals & Healthcare</li>
+                            <li>Premium Hotels & Resorts</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Commercial Space -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Commercial Space</h3>
+                        <p>Lease, purchase and sale of commercial properties:</p>
+                        <ul>
+                            <li>Premium Offices</li>
+                            <li>Warehouse Space</li>
+                            <li>Retail Spaces</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Residential -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Residential Properties</h3>
+                        <p>Luxury residential transactions:</p>
+                        <ul>
+                            <li>Premium Flats & Apartments</li>
+                            <li>Luxury Resorts</li>
+                            <li>Luxury Bungalows</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Consultancy -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Consultancy & Research</h3>
+                        <p>Expert advisory services:</p>
+                        <ul>
+                            <li>Market Research & Analysis</li>
+                            <li>Investment Strategy</li>
+                            <li>Due Diligence</li>
+                            <li>Deal Structuring</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section class="policies" id="policies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Policies & Process</h2>
+                <p>Transparent and structured approach to all our real estate transactions and consultancy services.</p>
+            </div>
+            <div class="policies-container">
+                <div class="policy-card">
+                    <h3><i class="fas fa-project-diagram"></i> Deal Protocol & Structure</h3>
+                    <p>Every client engagement begins with a structured protocol. We assign a dedicated lead advisor, establish clear communication channels, and define a step-by-step roadmap from initial due diligence to final closing.</p>
+                </div>
+                <div class="policy-card">
+                    <h3><i class="fas fa-file-contract"></i> Consultancy Fee Structure</h3>
+                    <p>Our consultancy fee is typically structured as a retainer or a fixed project fee, agreed upon upfront. This covers our deep-dive research, market analysis, and strategic advisory services.</p>
+                </div>
+                <div class="policy-card">
+                    <h3><i class="fas fa-percentage"></i> Commission Policy</h3>
+                    <p>Upon the successful execution of a transaction (Buy/Sale/Lease), a commission is earned. This is a pre-negotiated percentage of the transaction value or a success fee, detailed explicitly in our engagement agreement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Make a Strategic Real Estate Move?</h2>
+            <p>Contact our expert advisors today for a confidential consultation about your business or investment needs.</p>
+            <a href="#" class="btn">Request Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Delight Real Estate</h3>
+                    <p>Strategic real estate advisors specializing in business dealings, land parcels, and investment properties across multiple sectors.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <a href="#">Business Dealings</a>
+                    <a href="#">Land Parcel Transactions</a>
+                    <a href="#">Education & Hospitality</a>
+                    <a href="#">Commercial Space</a>
+                    <a href="#">Residential Properties</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Services</a>
+                    <a href="#">Policies</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business District, City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@delightrealestate.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Delight Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to Your Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
+                    <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
+                    <div class="error-message" id="login-password-error">Please enter your password</div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create an Account</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    <div class="error-message" id="signup-name-error">Please enter your full name</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    <div class="error-message" id="signup-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-phone">Mobile Number</label>
+                    <div class="phone-input-group">
+                        <select id="country-code" class="country-code">
+                            <option value="+1">+1 (US)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+91" selected>+91 (IN)</option>
+                            <option value="+61">+61 (AU)</option>
+                            <option value="+971">+971 (UAE)</option>
+                        </select>
+                        <input type="tel" id="signup-phone" class="phone-number" placeholder="Enter your mobile number" required>
+                    </div>
+                    <div class="error-message" id="signup-phone-error">Please enter a valid mobile number</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                    <div class="error-message" id="signup-password-error">Password must be at least 8 characters</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" placeholder="Confirm your password" required>
+                    <div class="error-message" id="signup-confirm-error">Passwords do not match</div>
+                </div>
+                
+                <!-- OTP Section -->
+                <div class="otp-section" id="otp-section">
+                    <h4>Verify Your Mobile Number</h4>
+                    <p>We've sent a 6-digit code to your mobile number</p>
+                    <div class="otp-input-group">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-1">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-2">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-3">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-4">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-5">
+                        <input type="text" class="otp-input" maxlength="1" id="otp-6">
+                    </div>
+                    <div class="error-message" id="otp-error">Invalid OTP. Please try again.</div>
+                    <div class="success-message" id="otp-success">Mobile number verified successfully!</div>
+                    <div class="otp-timer" id="otp-timer">Resend OTP in <span id="timer">02:00</span></div>
+                    <button type="button" class="btn btn-success" id="verify-otp-btn" style="width: 100%; margin-top: 10px;">Verify OTP</button>
+                    <button type="button" class="btn btn-outline" id="resend-otp-btn" style="width: 100%; margin-top: 10px; display: none;">Resend OTP</button>
+                </div>
+                
+                <button type="button" class="btn send-otp-btn" id="send-otp-btn">Send OTP</button>
+                <button type="submit" class="btn btn-disabled" id="signup-submit-btn" style="width: 100%; margin-top: 10px;" disabled>Complete Sign Up</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+            document.querySelector('.mobile-nav-buttons').style.display = 
+                document.querySelector('.mobile-nav-buttons').style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('nav ul').classList.remove('active');
+                    document.querySelector('.mobile-nav-buttons').style.display = 'none';
+                }
+            });
+        });
+
+        // Modal functionality
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const mobileLoginBtn = document.getElementById('mobile-login-btn');
+        const mobileSignupBtn = document.getElementById('mobile-signup-btn');
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+
+        function openModal(modal) {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(modal) {
+            modal.style.display = 'none';
+        }
+
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(loginModal);
+        });
+
+        signupBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(signupModal);
+        });
+
+        mobileLoginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(loginModal);
+            document.querySelector('nav ul').classList.remove('active');
+            document.querySelector('.mobile-nav-buttons').style.display = 'none';
+        });
+
+        mobileSignupBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal(signupModal);
+            document.querySelector('nav ul').classList.remove('active');
+            document.querySelector('.mobile-nav-buttons').style.display = 'none';
+        });
+
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                closeModal(loginModal);
+                closeModal(signupModal);
+            });
+        });
+
+        switchToSignup.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(signupModal);
+        });
+
+        switchToLogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeModal(signupModal);
+            openModal(loginModal);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                closeModal(loginModal);
+            }
+            if (e.target === signupModal) {
+                closeModal(signupModal);
+            }
+        });
+
+        // OTP Verification Functionality
+        const sendOtpBtn = document.getElementById('send-otp-btn');
+        const verifyOtpBtn = document.getElementById('verify-otp-btn');
+        const resendOtpBtn = document.getElementById('resend-otp-btn');
+        const otpSection = document.getElementById('otp-section');
+        const signupSubmitBtn = document.getElementById('signup-submit-btn');
+        const otpInputs = document.querySelectorAll('.otp-input');
+        const timerElement = document.getElementById('timer');
+        const otpError = document.getElementById('otp-error');
+        const otpSuccess = document.getElementById('otp-success');
+
+        let generatedOtp = '';
+        let timerInterval;
+        let timeLeft = 120; // 2 minutes in seconds
+
+        // Generate a random 6-digit OTP
+        function generateOtp() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+
+        // Start the countdown timer
+        function startTimer() {
+            timeLeft = 120;
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    resendOtpBtn.style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        // Update the timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Send OTP function
+        sendOtpBtn.addEventListener('click', function() {
+            // Validate phone number first
+            const phoneInput = document.getElementById('signup-phone');
+            const countryCode = document.getElementById('country-code').value;
+            const fullPhoneNumber = countryCode + phoneInput.value;
+            
+            if (!phoneInput.value || phoneInput.value.length < 10) {
+                document.getElementById('signup-phone-error').style.display = 'block';
+                phoneInput.classList.add('error');
+                return;
+            }
+            
+            // Hide error if shown
+            document.getElementById('signup-phone-error').style.display = 'none';
+            phoneInput.classList.remove('error');
+            
+            // Generate and "send" OTP
+            generatedOtp = generateOtp();
+            console.log(`OTP for ${fullPhoneNumber}: ${generatedOtp}`); // In real app, this would be sent via SMS
+            
+            // Show OTP section
+            otpSection.style.display = 'block';
+            sendOtpBtn.style.display = 'none';
+            
+            // Start timer
+            startTimer();
+            
+            // Focus on first OTP input
+            document.getElementById('otp-1').focus();
+        });
+
+        // Resend OTP function
+        resendOtpBtn.addEventListener('click', function() {
+            const phoneInput = document.getElementById('signup-phone');
+            const countryCode = document.getElementById('country-code').value;
+            const fullPhoneNumber = countryCode + phoneInput.value;
+            
+            // Generate new OTP
+            generatedOtp = generateOtp();
+            console.log(`New OTP for ${fullPhoneNumber}: ${generatedOtp}`); // In real app, this would be sent via SMS
+            
+            // Reset OTP inputs
+            otpInputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Hide messages
+            otpError.style.display = 'none';
+            otpSuccess.style.display = 'none';
+            
+            // Reset and start timer
+            clearInterval(timerInterval);
+            startTimer();
+            
+            // Hide resend button
+            resendOtpBtn.style.display = 'none';
+            
+            // Focus on first OTP input
+            document.getElementById('otp-1').focus();
+        });
+
+        // Verify OTP function
+        verifyOtpBtn.addEventListener('click', function() {
+            // Get entered OTP
+            let enteredOtp = '';
+            otpInputs.forEach(input => {
+                enteredOtp += input.value;
+            });
+            
+            // Verify OTP
+            if (enteredOtp === generatedOtp) {
+                // OTP is correct
+                otpError.style.display = 'none';
+                otpSuccess.style.display = 'block';
+                signupSubmitBtn.disabled = false;
+                signupSubmitBtn.classList.remove('btn-disabled');
+                signupSubmitBtn.classList.add('btn-success');
+                
+                // Stop timer
+                clearInterval(timerInterval);
+            } else {
+                // OTP is incorrect
+                otpError.style.display = 'block';
+                otpSuccess.style.display = 'none';
+            }
+        });
+
+        // OTP input navigation
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+                
+                // Hide error when user starts typing again
+                otpError.style.display = 'none';
+            });
+            
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Form validation for signup
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if OTP is verified
+            if (signupSubmitBtn.disabled) {
+                alert('Please verify your mobile number with OTP before submitting.');
+                return;
+            }
+            
+            // In a real application, you would submit the form data to the server here
+            alert('Account created successfully!');
+            closeModal(signupModal);
+            
+            // Reset form
+            signupForm.reset();
+            otpSection.style.display = 'none';
+            sendOtpBtn.style.display = 'block';
+            signupSubmitBtn.disabled = true;
+            signupSubmitBtn.classList.add('btn-disabled');
+            signupSubmitBtn.classList.remove('btn-success');
+            clearInterval(timerInterval);
+        });
+
+        // Form validation for login
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would submit the form data to the server here
+            alert('Login successful!');
+            closeModal(loginModal);
+            
+            // Reset form
+            loginForm.reset();
+        });
+    </script>
+</body>
+</html>
